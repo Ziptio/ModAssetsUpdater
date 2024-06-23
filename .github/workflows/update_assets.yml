@@ -18,6 +18,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Set PAYLOAD environment variable
         run: |
+          echo "::add-mask::PAYLOAD"
           PAYLOAD=$(echo '${{ toJson(github.event.client_payload) }}' | jq -c .)
           echo "::add-mask::$PAYLOAD"
           echo "PAYLOAD=$PAYLOAD" >> $GITHUB_ENV
