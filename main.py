@@ -12,8 +12,11 @@ platforms = [Modrinth("modrinth", "MODRINTH_TOKEN")] # Curseforge("curseforge")
 def create_replacement_dict():
     domain = f"https://{github_repo}.github.io/"
     replacements = []
-    custom_data = json.loads("{" + environ.get('PAYLOAD') + "}")
-    print(vars(custom_data))
+    payload = environ.get('PAYLOAD')
+    print(type(payload))
+    print(payload)
+    custom_data = json.loads(payload)
+    print(custom_data)
     if 'data' in custom_data:
         for data in custom_data['data']:
             to = domain + data['to']
