@@ -19,6 +19,6 @@ jobs:
       - name: Set PAYLOAD environment variable
         run: echo "PAYLOAD=$(echo '${{ toJson(github.event.client_payload) }}' | jq -c .)" >> $GITHUB_ENV
       - name: Update Assets
-        run: python src/main.py
+        run: python main.py
         env:
           PAYLOAD: ${{ env.PAYLOAD }}
