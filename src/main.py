@@ -2,8 +2,8 @@ import os
 import json
 from os import environ
 
-from src.platforms.curseforge import Curseforge
-from src.platforms.modrinth import Modrinth
+from platforms.curseforge import Curseforge
+from platforms.modrinth import Modrinth
 
 github_repo = "ModdersAgainstBlockers"
 platforms = [Modrinth("modrinth")] # Curseforge("curseforge")
