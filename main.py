@@ -70,7 +70,7 @@ def main():
         changes[platform] = {}
         for mod_id, body in mod_body[platform].items():
             new_body = body
-            for start, to in replacements:
+            for start, to in replacements.items():
                 new_body = new_body.replace(start, to)
             if new_body != body:
                 changes[platform][mod_id] = new_body
