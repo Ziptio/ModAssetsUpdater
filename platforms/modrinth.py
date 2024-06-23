@@ -17,8 +17,16 @@ class Modrinth(Platform):
                 json = r.json()
                 if 'body' in json:
                     mod_body[mod_id] = json['body']
+            else:
+                print("Failed to get modrinth body for: `" + mod_id + "` - status code: `" + str(r.status_code) +
+                      "` - error: `" + r.text + "`")
 
     def set_mod_body(self, mod_body: dict[str, str], auth_token: str):
         for mod_id, body in mod_body.items():
             if body:
-                requests.patch(modrinth_api + mod_id, params={'body': body}, headers={'Authorization': auth_token})
+                r = requests.patch(modrinth_api + mod_id, params={'body': body}, headers={'Authorization': auth_token})
+                if r.ok:
+                    print("Successfully updated modrinth body for: `" + mod_id + "`")
+                else:
+                    print("Failed to update modrinth body for: `" + mod_id + "` - status code: `" + str(r.status_code) +
+                          "` - error: `" + r.text + "`")
