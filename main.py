@@ -6,7 +6,7 @@ from platforms.curseforge import Curseforge
 from platforms.modrinth import Modrinth
 
 github_repo = "ModdersAgainstBlockers"
-platforms = [Modrinth("modrinth")] # Curseforge("curseforge")
+platforms = [Modrinth("modrinth", "MODRINTH_TOKEN")] # Curseforge("curseforge")
 
 
 def create_replacement_dict():
