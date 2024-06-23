@@ -34,6 +34,10 @@ def main():
                 data = json.load(f)
                 if 'ids' in data:
                     platform_mods[platform] = data['ids']
+                else:
+                    print("Now Id's found: " + platform_data)  # TODO: temp
+        else:
+            print("Missing file: " + platform_data)  # TODO: temp
 
     if len(platform_mods) == 0:
         print("No mods where found!")
