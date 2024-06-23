@@ -19,4 +19,4 @@ jobs:
       - name: Update Assets
         run: python main.py
         env:
-          WEBHOOK_TOKEN: ${{ toJson(github.event.client_payload) }}  # https://github.com/actions/runner/issues/475#issuecomment-1435491536
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}  # TODO: Figure out how to mask this in github actions
