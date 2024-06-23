@@ -36,7 +36,7 @@ def main():
                     platform_mods[platform] = data['ids']
 
     if len(platform_mods) == 0:
-        # TODO: Add helpful error message
+        print("No mods where found!")
         return
 
     # Get all mod bodies
@@ -63,9 +63,15 @@ def main():
             if new_body != body:
                 changes[platform][mod_id] = new_body
 
+    if len(changes) == 0:
+        print("No changes made!")
+        return
+
     # Upload changed bodies
     for platform, change in changes.items():
         platform.set_mod_body(change)
+
+    print(str(len(changes)) + " bodies where changed!")
 
 
 if __name__ == '__main__':
