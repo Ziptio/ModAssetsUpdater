@@ -23,7 +23,7 @@ def create_replacement_dict():
 
 
 def main():
-    repo_path = 'src'
+    repo_path = '.'
     data_path = os.path.join(repo_path, 'data')
 
     platform_mods = {}
