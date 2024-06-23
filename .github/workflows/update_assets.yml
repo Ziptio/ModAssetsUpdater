@@ -17,7 +17,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Set PAYLOAD environment variable
-        run: echo "PAYLOAD=$(echo '${{ toJson(github.event.client_payload) }}' | jq -c .)" >> $GITHUB_ENV
+        run: |
+          echo "::add-mask::$PAYLOAD"
+          echo "PAYLOAD=$(echo '${{ toJson(github.event.client_payload) }}' | jq -c .)" >> $GITHUB_ENV
       - name: Update Assets
         run: python main.py
         env:
