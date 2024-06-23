@@ -1,6 +1,6 @@
 import requests
 
-from src.platforms.platform import Platform
+from platforms.platform import Platform
 
 modrinth_api = "https://api.modrinth.com/v2/project/"
 

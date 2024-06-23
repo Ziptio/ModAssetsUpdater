@@ -1,6 +1,4 @@
-import requests
-
-from src.platforms.platform import Platform
+from platforms.platform import Platform
 
 curseforge_api = ""
 
