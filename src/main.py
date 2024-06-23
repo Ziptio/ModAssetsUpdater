@@ -13,11 +13,12 @@ def create_replacement_dict():
     domain = f"https://{github_repo}.github.io/"
     replacements = []
     custom_data = json.loads(environ.get('CUSTOM_DATA'))
-    for data in custom_data:
-        to = domain + data['to']
-        replacements[data['from']] = to
-        if 'last_to' in data:
-            replacements[data['last_to']] = to
+    if 'data' in custom_data:
+        for data in custom_data['data']:
+            to = domain + data['to']
+            replacements[data['from']] = to
+            if 'last_to' in data:
+                replacements[data['last_to']] = to
     return replacements
 
 
