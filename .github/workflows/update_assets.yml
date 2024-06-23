@@ -16,13 +16,7 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Set PAYLOAD environment variable
-        run: |
-          echo "::add-mask::PAYLOAD"
-          PAYLOAD=$(echo '${{ toJson(github.event.client_payload) }}' | jq -c .)
-          echo "::add-mask::$PAYLOAD"
-          echo "PAYLOAD=$PAYLOAD" >> $GITHUB_ENV
       - name: Update Assets
         run: python main.py
         env:
-          PAYLOAD: ${{ env.PAYLOAD }}
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
