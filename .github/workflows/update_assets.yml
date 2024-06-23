@@ -17,6 +17,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Update Assets
-        run: python src/main.py
         env:
-          CUSTOM_DATA: "${{github.event.client_payload}}"
+          PAYLOAD: ${{ github.event.client_payload.data }}
+        run: python src/main.py
