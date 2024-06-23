@@ -8,11 +8,11 @@ curseforge_api = ""
 
 class Curseforge(Platform):
 
-    def __init__(self, label):
-        super().__init__(label)
+    def __init__(self, platform_id, auth_token):
+        super().__init__(platform_id, auth_token)
 
     def get_mod_body(self, mod_body: dict[str, str]):
         pass
 
-    def set_mod_body(self, mod_body: dict[str, str]):
+    def set_mod_body(self, mod_body: dict[str, str], auth_token: str):
         pass

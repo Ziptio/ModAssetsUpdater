@@ -74,7 +74,10 @@ def main():
 
     # Upload changed bodies
     for platform, change in changes.items():
-        platform.set_mod_body(change)
+        auth_token = environ.get(platform.auth_token)
+        if auth_token is None:
+            print("Auth token not found! - " + platform.id)
+        platform.set_mod_body(change, auth_token)
 
     print(str(len(changes)) + " bodies where changed!")
 
