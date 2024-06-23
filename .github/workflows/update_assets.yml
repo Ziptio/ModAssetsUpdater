@@ -19,4 +19,5 @@ jobs:
       - name: Update Assets
         run: python main.py
         env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
           PAYLOAD: ${{ toJson(github.event.client_payload) }}  # TODO: Figure out how to mask this in github actions
