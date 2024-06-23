@@ -15,11 +15,10 @@ def create_replacement_dict():
     custom_data = json.loads(environ.get('PAYLOAD'))
     if 'data' in custom_data:
         for data in custom_data['data']:
-            for d in data:
-                to = domain + d['to']
-                replacements[d['from']] = to
-                if 'last_to' in d:
-                    replacements[d['last_to']] = to
+            to = domain + data['to']
+            replacements[data['from']] = to
+            if 'last_to' in data:
+                replacements[data['last_to']] = to
     return replacements
 
 
