@@ -8,7 +8,7 @@ jobs:
   handle-dispatch:
     runs-on: ubuntu-latest
     steps:
-      - id: checkout-repo
+      - name: Checkout Repo
         uses: actions/checkout@v3
       - name: Set up python
         uses: actions/setup-python@v2
@@ -19,4 +19,4 @@ jobs:
       - name: Update Assets
         run: python src/main.py
         env:
-          CUSTOM_DATA: ${{ github.event.client_payload }}
+          CUSTOM_DATA: "${{github.event.client_payload}}"
