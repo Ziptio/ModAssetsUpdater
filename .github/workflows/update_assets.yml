@@ -18,7 +18,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Get Payload
         run: |
-          PAYLOAD=$(${{ toJson(github.event.client_payload) }})
+          PAYLOAD=$(toJson(github.event.client_payload))
           echo "::add-mask::$PAYLOAD"
           echo "PAYLOAD=$PAYLOAD" >> $GITHUB_ENV
       - name: Update Assets

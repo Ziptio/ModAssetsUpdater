@@ -1,7 +1,6 @@
 import os
 import json
 from os import environ
-from pprint import pprint
 
 from platforms.curseforge import Curseforge
 from platforms.modrinth import Modrinth
@@ -14,7 +13,7 @@ def create_replacement_dict():
     domain = f"https://{github_repo}.github.io/"
     replacements = []
     custom_data = json.loads(environ.get('PAYLOAD'))
-    pprint(vars(custom_data))
+    print(vars(custom_data))
     if 'data' in custom_data:
         for data in custom_data['data']:
             to = domain + data['to']
