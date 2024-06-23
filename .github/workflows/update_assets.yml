@@ -1,0 +1,22 @@
+name: Receive Event
+
+on:
+  repository_dispatch:
+    types: [custom_event]
+
+jobs:
+  handle-dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout-repo
+        uses: actions/checkout@v3
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Update Assets
+        run: python src/main.py
+        env:
+          CUSTOM_DATA: ${{ github.event.client_payload }}
