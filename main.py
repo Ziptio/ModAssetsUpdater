@@ -13,12 +13,16 @@ def create_replacement_dict():
     domain = f"https://{github_repo}.github.io/"
     replacements = []
     payload = environ.get('PAYLOAD')
-    print(type(payload))
-    print(payload)
+    print("type0:" + type(payload))
+    print("0: " + payload)
     custom_data = json.loads(payload)
-    print(custom_data)
+    print("type1:" + type(custom_data))
+    print("1:" + custom_data)
     if 'data' in custom_data:
-        for data in custom_data['data']:
+        data_list = custom_data['data']
+        print("type2:" + type(data_list))
+        print("2:" + data_list)
+        for data in data_list:
             to = domain + data['to']
             replacements[data['from']] = to
             if 'last_to' in data:
@@ -39,7 +43,7 @@ def main():
                 if 'ids' in data:
                     platform_mods[platform] = data['ids']
                 else:
-                    print("Now Id's found: " + platform_data)  # TODO: temp
+                    print("No Id's found: " + platform_data)  # TODO: temp
         else:
             print("Missing file: " + platform_data)  # TODO: temp
 
